@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`configs.common > appConfig > should match snapshot 1`] = `
+{
+  "appName": "Starter",
+  "developerName": "The Rift",
+  "developerUrl": "https://therift.dev",
+}
+`;
