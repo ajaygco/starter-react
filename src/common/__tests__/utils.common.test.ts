@@ -1,4 +1,4 @@
-// bunx jest src/common/__tests__/utils.common.test.js
+// bunx jest src/common/__tests__/utils.common.test.ts
 
 import { getUtcTimestamp } from "@/common/utils.common";
 

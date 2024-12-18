@@ -1,6 +1,7 @@
 {
   "extends": ["prettier"],
-  "plugins": ["prettier", "react"],
+  "plugins": ["@typescript-eslint", "prettier", "react"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module",

@@ -18,7 +18,7 @@ import { AppRouter } from "@/components/app-router";
 initialiseSupabase(supabaseConfig);
 
 // Create Root
-const app = createRoot(document.getElementById("root"));
+const app = createRoot(document.getElementById("root") as HTMLElement);
 
 // Render
 app.render(

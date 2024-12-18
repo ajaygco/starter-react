@@ -1,4 +1,4 @@
-// bunx jest src/common/__tests__/configs.common.test.js
+// bunx jest src/common/__tests__/configs.common.test.ts
 
 import { appConfig } from "@/common/configs.common";
 

@@ -1,8 +1,11 @@
 // Modules
-import React from "react";
+import * as React from "react";
+
+// Types
+interface HomeProps {}
 
 // Component
-export const Home = () => {
+export const Home: React.FC<HomeProps> = (): React.ReactElement => {
   return (
     <div className="w-full h-full flex items-center justify-center">
       <div className="w-[460px] m-auto flex flex-col items-center p-6">
