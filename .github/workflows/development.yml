@@ -1,0 +1,111 @@
+name: Development
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  # Validations
+  validations:
+    name: Run Validations
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Setup Bun
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      # Install Dependencies
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      # Run Lint
+      - name: Run Lint
+        run: bun run lint
+
+      # Run Type Check
+      - name: Run Type Check
+        run: bun run tsc
+
+      # Run Unit Tests
+      - name: Run Unit Tests
+        run: bun run test
+
+      # Upload Coverage Artifact
+      - name: Upload Coverage Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+
+  # Build
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [validations]
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Setup Bun
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      # Install Dependencies
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      # Create Development Build
+      - name: Create Development Build
+        run: bun run build:dev
+
+      # Upload Artifact
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+  # Deploy
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Setup Bun
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      # Setup Firebase CLI
+      - name: Setup Firebase CLI
+        run: bun global add firebase-tools
+
+      # Download Artifact
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+
+      # Use Development Environment
+      - name: Use Development Environment
+        run: firebase use development --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+
+      # Deploy to Firebase
+      - name: Deploy to Firebase
+        run: firebase deploy --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}

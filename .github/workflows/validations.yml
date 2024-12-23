@@ -1,0 +1,46 @@
+name: Validations
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Validations
+  validations:
+    name: Run Validations
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Setup Bun
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      # Install Dependencies
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      # Run Lint
+      - name: Run Lint
+        run: bun run lint
+
+      # Run Type Check
+      - name: Run Type Check
+        run: bun run tsc
+
+      # Run Unit Tests
+      - name: Run Unit Tests
+        run: bun run test
+
+      # Upload Coverage Artifact
+      - name: Upload Coverage Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
