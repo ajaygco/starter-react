@@ -94,7 +94,7 @@ jobs:
 
       # Setup Firebase CLI
       - name: Setup Firebase CLI
-        run: bun global add firebase-tools
+        run: bun add firebase-tools --global
 
       # Download Artifact
       - name: Download Artifact
