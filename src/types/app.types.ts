@@ -13,3 +13,7 @@ export interface FirebaseConfig {
   appId: string;
   measurementId: string;
 }
+
+export interface SentryConfig {
+  dsn: string;
+}

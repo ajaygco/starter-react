@@ -1,5 +1,9 @@
 // Global Types
-import type { AppConfig, FirebaseConfig } from "@/types/app.types";
+import type {
+  AppConfig,
+  FirebaseConfig,
+  SentryConfig,
+} from "@/types/app.types";
 
 // App Config
 export const appConfig: AppConfig = {
@@ -17,4 +21,9 @@ export const firebaseConfig: FirebaseConfig = {
   messagingSenderId: import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_APP_FIREBASE_APP_ID,
   measurementId: import.meta.env.VITE_APP_FIREBASE_MEASUREMENT_ID,
+};
+
+// Sentry
+export const sentryConfig: SentryConfig = {
+  dsn: import.meta.env.VITE_APP_SENTRY_DSN,
 };
