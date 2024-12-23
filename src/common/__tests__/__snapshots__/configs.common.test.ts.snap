@@ -3,7 +3,7 @@
 exports[`configs.common > appConfig > should match snapshot 1`] = `
 {
   "appName": "Starter",
-  "developerName": "The Rift",
-  "developerUrl": "https://therift.dev",
+  "developerName": "Ajay Gupta",
+  "developerUrl": "https://ajayg.co",
 }
 `;
