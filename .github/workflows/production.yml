@@ -92,21 +92,9 @@ jobs:
         with:
           bun-version: latest
 
-      # Setup Firebase CLI
-      - name: Setup Firebase CLI
-        run: bun add firebase-tools --global
-
       # Download Artifact
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist
-
-      # Use Production Environment
-      - name: Use Production Environment
-        run: firebase use production --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
-
-      # Deploy to Firebase
-      - name: Deploy to Firebase
-        run: firebase deploy --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}

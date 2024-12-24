@@ -2,14 +2,15 @@
 import * as Sentry from "@sentry/react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { getAnalytics } from "firebase/analytics";
-import { initializeApp } from "firebase/app";
 
 // Styles
 import "./main.css";
 
 // Common
-import { firebaseConfig, sentryConfig } from "@/common/configs.common";
+import { supabaseConfig, sentryConfig } from "@/common/configs.common";
+
+// Helpers
+import { initialiseSupabase } from "@/helpers/supabase.helper";
 
 // Components
 import { AppRouter } from "@/components/app-router";
@@ -25,13 +26,8 @@ if (sentryConfig.dsn) {
   });
 }
 
-// Initialise Firebase
-initializeApp(firebaseConfig);
-
-// Initialise Analytics
-if (firebaseConfig.measurementId) {
-  getAnalytics();
-}
+// Initialise Supabase
+initialiseSupabase(supabaseConfig);
 
 // Create Root
 const app = createRoot(document.getElementById("root") as HTMLElement);
