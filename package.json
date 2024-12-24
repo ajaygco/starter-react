@@ -9,12 +9,14 @@
     "build:dev": "env-cmd -f .env.development vite build",
     "start:prod": "env-cmd -f .env.production vite",
     "build:prod": "env-cmd -f .env.production vite build",
+    "ui": "bunx --bun shadcn@latest add",
     "lint": "eslint . --ext ts,tsx",
     "test": "vitest --coverage",
     "prepare": "husky",
     "tsc": "tsc"
   },
   "dependencies": {
+    "@radix-ui/react-progress": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@sentry/react": "^8.47.0",
     "@supabase/supabase-js": "^2.47.10",
