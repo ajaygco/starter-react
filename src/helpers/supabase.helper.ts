@@ -5,7 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import type { SupabaseClient, SupabaseConfig } from "@/types/app.types";
 
 // Instance
-let supabase;
+let supabase: SupabaseClient;
 
 // Initialise Supabase
 export const initialiseSupabase = (config: SupabaseConfig): SupabaseClient => {

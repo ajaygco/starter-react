@@ -6,6 +6,7 @@ import {
 
 // Capture Exception
 export const captureException = (...args: unknown[]): void => {
+  // @ts-expect-error
   _captureException(...args);
 
   // eslint-disable-next-line no-console
@@ -14,6 +15,7 @@ export const captureException = (...args: unknown[]): void => {
 
 // Log
 export const captureEvent = (...args: unknown[]): void => {
+  // @ts-expect-error
   _captureEvent(...args);
 
   // eslint-disable-next-line no-console
