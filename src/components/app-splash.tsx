@@ -19,7 +19,7 @@ export const AppSplash: React.FC<AppSplashProps> = ({
   return (
     <div className="w-dvw h-dvh flex items-center justify-center">
       <div className="w-48 flex flex-col items-center justify-center">
-        <p>{appConfig.appName}</p>
+        <p className="mb-6">{appConfig.appName}</p>
 
         <Progress value={progress} />
       </div>
