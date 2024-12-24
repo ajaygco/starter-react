@@ -20,12 +20,12 @@ export const AppRouter: React.FC<AppRouterProps> = (): React.ReactElement => {
 
   // On Auth State Changed
   const onAuthStateChanged = (session: unknown): void => {
-    setAppStartProgress(75);
+    setAppStartProgress(90);
     setIsLoggedIn(!!session);
 
     setTimeout(() => {
       // Just for the aesthetics
-      // setIsAppStarting(false);
+      setIsAppStarting(false);
     }, 500);
   };
 
@@ -45,7 +45,7 @@ export const AppRouter: React.FC<AppRouterProps> = (): React.ReactElement => {
   }, []);
 
   if (isAppStarting) {
-    return <AppSplash progress={57} />;
+    return <AppSplash progress={appStartProgress} />;
   }
 
   if (isLoggedIn) {
